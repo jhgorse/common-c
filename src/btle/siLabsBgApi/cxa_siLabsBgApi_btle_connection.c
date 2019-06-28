@@ -152,7 +152,7 @@ void cxa_siLabsBgApi_btle_connection_readFromCharacteristic(cxa_siLabsBgApi_btle
 	if( (cxa_stateMachine_getCurrentState(&connIn->stateMachine) != STATE_CONNECTED_IDLE) ||
 		(connIn->targetProcType != CXA_SILABSBGAPI_PROCTYPE_NONE) )
 	{
-		cxa_logger_warn(&connIn->logger, "incorrect state");
+		cxa_logger_warn(&connIn->logger, "incorrect state in %s()", __func__);
 		cxa_btle_client_notify_readComplete(connIn->parentClient, &connIn->targetAddress, serviceUuidIn, characteristicUuidIn, false, NULL);
 		return;
 	}
@@ -160,13 +160,13 @@ void cxa_siLabsBgApi_btle_connection_readFromCharacteristic(cxa_siLabsBgApi_btle
 	// save our target service and characteristic
 	if( !cxa_btle_uuid_initFromString(&connIn->targetServiceUuid, serviceUuidIn) )
 	{
-		cxa_logger_warn(&connIn->logger, "invalid service UUID");
+		cxa_logger_warn(&connIn->logger, "invalid service UUID in %s()", __func__);
 		cxa_btle_client_notify_readComplete(connIn->parentClient, &connIn->targetAddress, serviceUuidIn, characteristicUuidIn, false, NULL);
 		return;
 	}
 	if( !cxa_btle_uuid_initFromString(&connIn->targetCharacteristicUuid, characteristicUuidIn) )
 	{
-		cxa_logger_warn(&connIn->logger, "invalid characteristic UUID");
+		cxa_logger_warn(&connIn->logger, "invalid characteristic UUID in %s()", __func__);
 		cxa_btle_client_notify_readComplete(connIn->parentClient, &connIn->targetAddress, serviceUuidIn, characteristicUuidIn, false, NULL);
 		return;
 	}
@@ -212,7 +212,7 @@ void cxa_siLabsBgApi_btle_connection_writeToCharacteristic(cxa_siLabsBgApi_btle_
 	if( (cxa_stateMachine_getCurrentState(&connIn->stateMachine) != STATE_CONNECTED_IDLE) ||
 		(connIn->targetProcType != CXA_SILABSBGAPI_PROCTYPE_NONE) )
 	{
-		cxa_logger_warn(&connIn->logger, "incorrect state");
+		cxa_logger_warn(&connIn->logger, "incorrect state in %s()", __func__);
 		cxa_btle_client_notify_writeComplete(connIn->parentClient, &connIn->targetAddress, serviceUuidIn, characteristicUuidIn, false);
 		return;
 	}
@@ -220,13 +220,13 @@ void cxa_siLabsBgApi_btle_connection_writeToCharacteristic(cxa_siLabsBgApi_btle_
 	// save our target service and characteristic
 	if( !cxa_btle_uuid_initFromString(&connIn->targetServiceUuid, serviceUuidIn) )
 	{
-		cxa_logger_warn(&connIn->logger, "invalid service UUID");
+		cxa_logger_warn(&connIn->logger, "invalid service UUID in %s()", __func__);
 		cxa_btle_client_notify_writeComplete(connIn->parentClient, &connIn->targetAddress, serviceUuidIn, characteristicUuidIn, false);
 		return;
 	}
 	if( !cxa_btle_uuid_initFromString(&connIn->targetCharacteristicUuid, characteristicUuidIn) )
 	{
-		cxa_logger_warn(&connIn->logger, "invalid characteristic UUID");
+		cxa_logger_warn(&connIn->logger, "invalid characteristic UUID in %s()", __func__);
 		cxa_btle_client_notify_writeComplete(connIn->parentClient, &connIn->targetAddress, serviceUuidIn, characteristicUuidIn, false);
 		return;
 	}
@@ -276,7 +276,7 @@ void cxa_siLabsBgApi_btle_connection_changeNotifications(cxa_siLabsBgApi_btle_co
 	if( (cxa_stateMachine_getCurrentState(&connIn->stateMachine) != STATE_CONNECTED_IDLE) ||
 		(connIn->targetProcType != CXA_SILABSBGAPI_PROCTYPE_NONE) )
 	{
-		cxa_logger_warn(&connIn->logger, "incorrect state");
+		cxa_logger_warn(&connIn->logger, "incorrect state in %s()", __func__);
 		cxa_btle_client_notify_notiIndiSubscriptionChanged(connIn->parentClient, &connIn->targetAddress, serviceUuidIn, characteristicUuidIn, false, false);
 		return;
 	}
@@ -284,13 +284,13 @@ void cxa_siLabsBgApi_btle_connection_changeNotifications(cxa_siLabsBgApi_btle_co
 	// save our target service and characteristic
 	if( !cxa_btle_uuid_initFromString(&connIn->targetServiceUuid, serviceUuidIn) )
 	{
-		cxa_logger_warn(&connIn->logger, "invalid service UUID");
+		cxa_logger_warn(&connIn->logger, "invalid service UUID in %s()", __func__);
 		cxa_btle_client_notify_notiIndiSubscriptionChanged(connIn->parentClient, &connIn->targetAddress, serviceUuidIn, characteristicUuidIn, false, false);
 		return;
 	}
 	if( !cxa_btle_uuid_initFromString(&connIn->targetCharacteristicUuid, characteristicUuidIn) )
 	{
-		cxa_logger_warn(&connIn->logger, "invalid characteristic UUID");
+		cxa_logger_warn(&connIn->logger, "invalid characteristic UUID in %s()", __func__);
 		cxa_btle_client_notify_notiIndiSubscriptionChanged(connIn->parentClient, &connIn->targetAddress, serviceUuidIn, characteristicUuidIn, false, false);
 		return;
 	}
